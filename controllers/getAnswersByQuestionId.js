@@ -2,18 +2,22 @@ const { answers } = require('../store/answers');
 
 const getAnswersByQuestionId = (req, res) => {
   const { questionId, answerId } = req.body;
-  if (questionId < 1) {
-    res.status(400).send({ message: 'Передан некорректный айди' });
+  if (typeof questionId === 'undefined') {
+    res.status(400).send({ message: 'Необходимо передать айди вопроса' });
   }
-  if (!answers[questionId]) {
-    res.status(404).send({ message: `Вопрос с айди ${questionId} не найден` });
+  if (questionId < 1 || (questionId > Object.keys(answers).length)) {
+    res.status(400).send({ message: 'Передан некорректный айди вопроса' });
   }
   if (typeof answerId === 'undefined') {
     res.status(400).send({ message: 'Необходимо передать айди ответа' });
   }
-  if ((answerId < 1) || (answerId > 4)) {
+  if ((answerId < 1) || (answerId > answers[questionId].answers.length)) {
     res.status(400).send({ message: 'Передан некорректный айди ответа' });
   }
+  if (!answers[questionId]) {
+    res.status(404).send({ message: `Вопрос с айди ${questionId} не найден` });
+  }
+
   res.send(answers[questionId]);
 };
 

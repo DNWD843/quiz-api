@@ -2,7 +2,10 @@ const { questions } = require('../store/questions');
 
 const getQuestionById = (req, res) => {
   const { questionId } = req.body;
-  if (questionId < 1) {
+  if (typeof questionId === 'undefined') {
+    res.status(400).send({ message: 'Необходимо передать айди вопроса' });
+  }
+  if (questionId < 1 || (questionId > Object.keys(questions).length)) {
     res.status(400).send({ message: 'Передан некорректный айди' });
   }
   if (!questions[questionId]) {
