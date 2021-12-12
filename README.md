@@ -61,10 +61,12 @@ WORK IN PROGRESS!
 ### GET **/api/result** `getting result message`
 **body:**
 ```
-Array<{
-  questionId: number, - question id
-  answerId: number,   - player chosen answer id
-}>
+{
+  playerStatistics: Array<{
+    questionId: number, - question id
+    answerId: number,   - player chosen answer id
+  }>
+}
 ```  
 **successful response:**
 ```
