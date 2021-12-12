@@ -1,5 +1,5 @@
 require('dotenv').config();
-const createError = require('http-errors');
+// const createError = require('http-errors');
 const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
@@ -19,15 +19,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use(express.static(path.join(__dirname, 'public')));
 
-/**
- * @param {number} questionId - айди вопроса
- */
 app.use(rootRouter);
 
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
-  next(createError(404));
-});
+// app.use((req, res, next) => {
+//   next(createError(404));
+// });
 
 // error handler
 // eslint-disable-next-line no-unused-vars
