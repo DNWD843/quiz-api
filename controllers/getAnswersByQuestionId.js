@@ -1,5 +1,5 @@
 const questionsWithCorrectAnswers = require('../store/answers');
-const chosenAnswersStatistics = require('../store/chosenAnswers');
+const totalAnswersStatistics = require('../store/chosenAnswers');
 const getAnswerStatisticsInPercents = require('../helpers/getAnswerStatisticsInPercents');
 const BadRequestError = require('../errors/BadRequest');
 const NotFoundError = require('../errors/NotFound');
@@ -22,11 +22,11 @@ const getAnswersByQuestionId = (req, res) => {
     throw new NotFoundError(`Вопрос с айди ${questionId} не найден`);
   }
 
-  chosenAnswersStatistics[questionId].total += 1;
-  chosenAnswersStatistics[questionId][answerId] += 1;
+  totalAnswersStatistics[questionId].total += 1;
+  totalAnswersStatistics[questionId][answerId] += 1;
 
   const percentage = getAnswerStatisticsInPercents(
-    { statistics: chosenAnswersStatistics, questionId },
+    { statistics: totalAnswersStatistics, questionId },
   );
   questionsWithCorrectAnswers[questionId].answers.forEach((answer) => {
     // eslint-disable-next-line no-param-reassign
