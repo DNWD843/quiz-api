@@ -1,11 +1,12 @@
 # QUIZ 2021 - API
 
-## USAGE
+## Installation
 **1. Clone the project**    
 **2.`yarn`(recommended) or `npm i`**  
 **3. `yarn start` or `npm run start`**  
 
-## REQUESTS
+## Usage
+### Requests
 ### GET **/api/question** `getting question by question id with answer options`
 **body:** 
 ```
