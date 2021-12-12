@@ -26,8 +26,8 @@
 ```
 **errors**  
 **400**: Bad Request, check request params in body  
-**404**: Not Found, params are correct, but question is not found or does`nt exist
-**500**: Internal Server Error
+**404**: Not Found, params are correct, but question is not found or does`nt exist  
+**500**: Internal Server Error  
 
 ### POST **/question** `getting question with the details of the answers`
 **body:** 
@@ -53,5 +53,5 @@
 ```
 **errors**  
 **400**: Bad Request, check request params in body  
-**404**: Not Found, params are correct, but question/answer is not found or does`nt exist
-**500**: Internal Server Error
+**404**: Not Found, params are correct, but question/answer is not found or does`nt exist  
+**500**: Internal Server Error  
