@@ -3,7 +3,7 @@
 ## USAGE
 **1. Clone the project**    
 **2.`yarn`(recommended) or `npm i`**  
-**3. `yarn run dev` or `npm run dev`**  
+**3. `yarn start` or `npm run start`**  
 
 ## REQUESTS
 ### GET **/question** `getting question by question id with answer options`
