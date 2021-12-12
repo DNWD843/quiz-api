@@ -6,7 +6,7 @@
 **3. `yarn start` or `npm run start`**  
 
 ## REQUESTS
-### GET **/question** `getting question by question id with answer options`
+### GET **/api/question** `getting question by question id with answer options`
 **body:** 
 ```
 {
@@ -29,7 +29,7 @@
 **404**: Not Found, params are correct, but question is not found or does`nt exist  
 **500**: Internal Server Error  
 
-### POST **/question** `getting question with the details of the answers`
+### POST **/api/question** `getting question with the details of the answers`
 **body:** 
 ```
 {
