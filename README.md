@@ -47,7 +47,7 @@
    text: string,
    isCorrect: boolean,
    hint: string,
-   percent: number, WORK IN PROGRESS
+   percent: number,
  }>
 }
 ```
