@@ -1,4 +1,4 @@
-# QUIZ 2021
+# QUIZ 2021 - API
 
 ## USAGE
 **1. Clone the project**    
