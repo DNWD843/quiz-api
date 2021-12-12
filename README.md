@@ -77,5 +77,4 @@
 ```
 **errors**  
 **400**: Bad Request, check request params in body  
-**404**: Not Found, params are correct, but result message is not found or does`nt exist  
 **500**: Internal Server Error  
