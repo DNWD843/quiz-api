@@ -7,7 +7,7 @@
 
 ## Usage
 ### Requests
-### GET **/api/question** `getting question by question id with answer options`
+### GET **/api/question** `getting question by question-id with answer options`
 **query:** 
 ```
 {
@@ -63,8 +63,8 @@
 ```
 {
   playerStatistics: Array<{
-    questionId: number, - question id
-    answerId: number,   - player chosen answer id
+    questionId: number, - question-id
+    answerId: number,   - answer-id chosen by player
   }>
 }
 ```  
