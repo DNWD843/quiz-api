@@ -17,7 +17,7 @@
 ```
 {
  id: number,
- text: string,
+ title: string,
  answers: Array<{
    id: number,
    text: string,
@@ -41,12 +41,12 @@
 ```
 {
  id: number,
- text: string,
+ title: string,
  answers: Array<{
    id: number,
    text: string,
    isCorrect: boolean,
-   hint: string,
+   comment: string,
    percent: number,
  }>
 }
