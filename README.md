@@ -26,7 +26,7 @@
 }
 ```
 **errors**  
-**400**: Bad Request, check request params in body  
+**400**: Bad Request, check request query-params    
 **404**: Not Found, params are correct, but question is not found or does`nt exist  
 **500**: Internal Server Error  
 ***
