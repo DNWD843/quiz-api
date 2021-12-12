@@ -28,6 +28,7 @@
 **400**: Bad Request, check request params in body  
 **404**: Not Found, params are correct, but question is not found or does`nt exist  
 **500**: Internal Server Error  
+***
 
 ### POST **/api/question** `getting question with the details of the answers`
 **body:** 
@@ -54,4 +55,25 @@
 **errors**  
 **400**: Bad Request, check request params in body  
 **404**: Not Found, params are correct, but question/answer is not found or does`nt exist  
+**500**: Internal Server Error  
+***  
+WORK IN PROGRESS!
+### GET **/api/result** `getting result message`
+**body:**
+```
+Array<{
+  questionId: number, - question id
+  answerId: number,   - player chosen answer id
+}>
+```  
+**successful response:**
+```
+{
+ title: string,
+ text: string,
+}
+```
+**errors**  
+**400**: Bad Request, check request params in body  
+**404**: Not Found, params are correct, but result message is not found or does`nt exist  
 **500**: Internal Server Error  
