@@ -1,15 +1,9 @@
-const questionsWithCorrectAnswers = require('../store/answers');
 const resultConfig = require('../store/resultConfig');
+const filterCorrectAnswers = require('../helpers/filterCorrectAnswers');
 
 const getResultMessage = (req, res) => {
   const { playerStatistics } = req.body;
-  const resultStatistics = playerStatistics
-    .map(
-      ({ questionId, answerId }) => questionsWithCorrectAnswers[questionId].answers
-        .find((answer) => answer.id === answerId)
-        .isCorrect,
-    )
-    .filter((item) => item);
+  const resultStatistics = filterCorrectAnswers(playerStatistics);
 
   switch (resultStatistics.length) {
     case (0):

@@ -1,8 +1,9 @@
 const questionsWithCorrectAnswers = require('../store/answers');
 const totalAnswersStatistics = require('../store/chosenAnswers');
-const getAnswerStatisticsInPercents = require('../helpers/getAnswerStatisticsInPercents');
+const calculateAnswerStatisticsInPercents = require('../helpers/getAnswerStatisticsInPercents');
 const BadRequestError = require('../errors/BadRequest');
 const NotFoundError = require('../errors/NotFound');
+const updateAnswerPercentValue = require('../helpers/updateAnswerPercentValue');
 
 const getAnswersByQuestionId = (req, res) => {
   const { questionId, answerId } = req.body;
@@ -25,12 +26,11 @@ const getAnswersByQuestionId = (req, res) => {
   totalAnswersStatistics[questionId].total += 1;
   totalAnswersStatistics[questionId][answerId] += 1;
 
-  const percentage = getAnswerStatisticsInPercents(
-    { statistics: totalAnswersStatistics, questionId },
-  );
-  questionsWithCorrectAnswers[questionId].answers.forEach((answer) => {
-    // eslint-disable-next-line no-param-reassign
-    answer.percent = percentage[answer.id] || 0;
+  updateAnswerPercentValue({
+    percentage: calculateAnswerStatisticsInPercents(
+      { statistics: totalAnswersStatistics, questionId },
+    ),
+    questionAnswers: questionsWithCorrectAnswers[questionId].answers,
   });
 
   res.send(questionsWithCorrectAnswers[questionId]);
