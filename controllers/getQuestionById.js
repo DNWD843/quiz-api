@@ -1,10 +1,10 @@
-const { questions } = require('../store/questions');
+const questions = require('../store/questions');
 const BadRequestError = require('../errors/BadRequest');
 const NotFoundError = require('../errors/NotFound');
 
 const getQuestionById = (req, res) => {
   const { questionId } = req.query;
-  console.log(req);
+
   if (typeof questionId === 'undefined') {
     throw new BadRequestError('Необходимо передать айди вопроса');
   }

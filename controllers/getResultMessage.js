@@ -1,8 +1,18 @@
 const resultConfig = require('../store/resultConfig');
 const filterCorrectAnswers = require('../helpers/filterCorrectAnswers');
+const BadRequestError = require('../errors/BadRequest');
+const questions = require('../store/questions');
 
 const getResultMessage = (req, res) => {
   const { playerStatistics } = req.body;
+
+  if (!playerStatistics) {
+    throw new BadRequestError('Некорректный запрос. Необходимо передать статистику игрока.');
+  }
+  if (playerStatistics.length !== Object.keys(questions).length) {
+    throw new BadRequestError('Некорректный запрос. Статистика игрока передана неполностью.');
+  }
+
   const resultStatistics = filterCorrectAnswers(playerStatistics);
 
   switch (resultStatistics.length) {
