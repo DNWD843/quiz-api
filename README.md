@@ -8,7 +8,7 @@
 ## Usage
 ### Requests
 ### GET **/api/question** `getting question by question id with answer options`
-**body:** 
+**query:** 
 ```
 {
   questionId: number
@@ -59,7 +59,7 @@
 **500**: Internal Server Error  
 ***  
 WORK IN PROGRESS!
-### GET **/api/result** `getting result message`
+### POST **/api/result** `getting result message`
 **body:**
 ```
 {

@@ -2,7 +2,7 @@ const questionsWithCorrectAnswers = require('../store/answers');
 const resultConfig = require('../store/resultConfig');
 
 const getResultMessage = (req, res) => {
-  const { playerStatistics } = req.query;
+  const { playerStatistics } = req.body;
   const resultStatistics = playerStatistics
     .map(
       ({ questionId, answerId }) => questionsWithCorrectAnswers[questionId].answers
