@@ -1,29 +1,25 @@
 const questionsWithCorrectAnswers = require('../store/answers');
 const chosenAnswersStatistics = require('../store/chosenAnswers');
 const getAnswerStatisticsInPercents = require('../helpers/getAnswerStatisticsInPercents');
+const BadRequestError = require('../errors/BadRequest');
+const NotFoundError = require('../errors/NotFound');
 
 const getAnswersByQuestionId = (req, res) => {
   const { questionId, answerId } = req.body;
-
   if (typeof questionId === 'undefined') {
-    res.status(400).send({ message: 'Необходимо передать айди вопроса' });
-    return;
+    throw new BadRequestError('Необходимо передать айди вопроса');
   }
   if (questionId < 1 || (questionId > Object.keys(questionsWithCorrectAnswers).length)) {
-    res.status(400).send({ message: 'Передан некорректный айди вопроса' });
-    return;
+    throw new BadRequestError('Передан некорректный айди вопроса');
   }
   if (typeof answerId === 'undefined') {
-    res.status(400).send({ message: 'Необходимо передать айди ответа' });
-    return;
+    throw new BadRequestError('Необходимо передать айди ответа');
   }
   if ((answerId < 1) || (answerId > questionsWithCorrectAnswers[questionId].answers.length)) {
-    res.status(400).send({ message: 'Передан некорректный айди ответа' });
-    return;
+    throw new BadRequestError('Передан некорректный айди ответа');
   }
   if (!questionsWithCorrectAnswers[questionId]) {
-    res.status(404).send({ message: `Вопрос с айди ${questionId} не найден` });
-    return;
+    throw new NotFoundError(`Вопрос с айди ${questionId} не найден`);
   }
 
   chosenAnswersStatistics[questionId].total += 1;

@@ -1,18 +1,17 @@
 const { questions } = require('../store/questions');
+const BadRequestError = require('../errors/BadRequest');
+const NotFoundError = require('../errors/NotFound');
 
 const getQuestionById = (req, res) => {
   const { questionId } = req.body;
   if (typeof questionId === 'undefined') {
-    res.status(400).send({ message: 'Необходимо передать айди вопроса' });
-    return;
+    throw new BadRequestError('Необходимо передать айди вопроса');
   }
   if (questionId < 1 || (questionId > Object.keys(questions).length)) {
-    res.status(400).send({ message: 'Передан некорректный айди' });
-    return;
+    throw new BadRequestError('Передан некорректный айди');
   }
   if (!questions[questionId]) {
-    res.status(404).send({ message: `Вопрос с айди ${questionId} не найден` });
-    return;
+    throw new NotFoundError(`Вопрос с айди ${questionId} не найден`);
   }
 
   res.send(questions[questionId]);
