@@ -17,13 +17,15 @@
 **successful response:**  
 ```
 {
- id: number,
- title: string,
- answers: Array<{
-   id: number,
-   text: string,
- }>
-}
+  [key: number]: {
+    id: number,
+    title: string,
+    answers: Array<{
+      id: number,
+      text: string,
+    }>
+  }
+}                  
 ```
 **errors**  
 **400**: Bad Request, check request query-params    
@@ -42,16 +44,18 @@
 **successful response:**
 ```
 {
- id: number,
- title: string,
- answers: Array<{
-   id: number,
-   text: string,
-   isCorrect: boolean,
-   comment: string,
-   percent: number,
- }>
-}
+  [key: number]: {
+    id: number,
+    title: string,
+    answers: Array<{
+      id: number,
+      text: string,
+      isCorrect: boolean,
+      comment: string,
+      percent: number,
+    }>
+  }
+}  
 ```
 **errors**  
 **400**: Bad Request, check request params in body  
