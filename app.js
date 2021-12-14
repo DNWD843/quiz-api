@@ -6,7 +6,7 @@ const path = require('path');
 const rootRouter = require('./routes');
 const handleErrors = require('./middlwares/handleErrors');
 
-const { PORT = 4000 } = process.env;
+const { PORT = 8080 } = process.env;
 
 const app = express();
 
