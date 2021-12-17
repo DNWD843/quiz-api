@@ -8,7 +8,7 @@ const getQuestionById = (req, res) => {
   if (typeof questionId === 'undefined') {
     throw new BadRequestError('Необходимо передать айди вопроса');
   }
-  if (questionId < 1 || (questionId > Object.keys(questions).length)) {
+  if (Number(questionId) < 1 || (Number(questionId) > Object.keys(questions).length)) {
     throw new BadRequestError('Передан некорректный айди');
   }
   if (!questions[questionId]) {
