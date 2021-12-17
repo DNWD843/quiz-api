@@ -77,5 +77,5 @@
 }
 ```
 **errors**  
-**400**: Bad Request
+**400**: Bad Request  
 **500**: Internal Server Error  
