@@ -6,7 +6,7 @@ const getResultMessage = require('../controllers/getResultMessage');
 
 router.get('/api/question', getQuestionById);
 router.post('/api/question', getAnswersByQuestionId);
-router.post('/api/result', getResultMessage);
+router.get('/api/result', getResultMessage);
 router.use('*', badRequestRouter);
 
 module.exports = router;

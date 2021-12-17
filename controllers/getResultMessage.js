@@ -1,15 +1,21 @@
 const resultConfig = require('../store/resultConfig');
-const filterCorrectAnswers = require('../helpers/filterCorrectAnswers');
-const checkPlayerStatistics = require('../helpers/checkPlayerStatistics');
+const checkResultValue = require('../helpers/checkResultValue');
+const BadRequestError = require('../errors/BadRequest');
 
 const getResultMessage = (req, res) => {
-  const { playerStatistics } = req.body;
+  const { correctAnswersCounter } = req.query;
 
-  checkPlayerStatistics(playerStatistics);
+  if (typeof correctAnswersCounter === 'undefined') {
+    throw new BadRequestError('Необходимо передать количество правильных ответов игрока');
+  }
 
-  const resultStatistics = filterCorrectAnswers(playerStatistics);
+  const isResultValid = checkResultValue(correctAnswersCounter);
 
-  switch (resultStatistics.length) {
+  if (!isResultValid) {
+    throw new BadRequestError('Передано некорректное значение количества правильных ответов игрока');
+  }
+
+  switch (Number(correctAnswersCounter)) {
     case (0):
     case (1):
     case (2):

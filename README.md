@@ -28,7 +28,7 @@
 }                  
 ```
 **errors**  
-**400**: Bad Request, check request query-params    
+**400**: Bad Request
 **404**: Not Found, params are correct, but question is not found or does`nt exist  
 **500**: Internal Server Error  
 ***
@@ -58,18 +58,15 @@
 }  
 ```
 **errors**  
-**400**: Bad Request, check request params in body  
+**400**: Bad Request
 **404**: Not Found, params are correct, but question/answer is not found or does`nt exist  
 **500**: Internal Server Error  
 ***
-### POST **/api/result** `getting result message`
-**body:**
+### GET **/api/result** `getting result message`
+**query:**
 ```
 {
-  playerStatistics: Array<{
-    questionId: number, - question-id
-    answerId: number,   - answer-id chosen by player
-  }>
+  correctAnswersCounter: number
 }
 ```  
 **successful response:**
@@ -80,5 +77,5 @@
 }
 ```
 **errors**  
-**400**: Bad Request, check request params in body  
+**400**: Bad Request
 **500**: Internal Server Error  
